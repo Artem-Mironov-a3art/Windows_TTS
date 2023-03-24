@@ -17,12 +17,14 @@ def set_voice():
 def save_mp3():
     file_name = Ent.get()
     file_save = EntF.get()
-    tts.save_to_file(file_name, file_save)
+    with open(f"{file_name}", "r", encoding="utf-8") as file:
+        files = file.read()
+    tts.save_to_file(files, file_save)
     tts.runAndWait()
 
 win = tk.Tk()
 win.title("Windows_TTS")
-win.geometry("640x480")
+win.geometry("480x300")
 
 label_Name = tk.Label(win, text="The program that translates txt files into mp3")
 label_Name.pack()
